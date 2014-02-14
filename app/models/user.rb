@@ -7,7 +7,8 @@ class User < ActiveRecord::Base
   belongs_to :position
   has_many :user_skills
   has_many :skills, through: :user_skills
-  has_and_belongs_to_many :projects
+  has_many :projects_users, dependent: :destroy
+  has_many :projects, through: :projects_users
 
   validates :name,  presence: true, length: {maximum: 50}
   validates :email, presence: true, length: {maximum: 30},

@@ -1,0 +1,36 @@
+<%= form_for [:admin, @project] do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <%= f.hidden_field :id %>
+  <%= f.label "Name" %>
+  <%= f.text_field :name %>
+  <%= f.label "Abbreviation" %>
+  <%= f.text_field :abbr %>
+  <%= f.label "Team incharge" %>
+  <%= f.collection_select :team_id, Team.all, :id, :name,
+    {select: "1", include_blank: "Select team ..."} %>
+  <%= f.label "Team leader" %>
+  <%= f.collection_select :leader_id, {}, :id, :name %>
+  <%= f.label "Start time" %>
+  <%= f.date_select :start_date%>
+  <%= f.label "End time" %>
+  <%= f.date_select :end_date%>
+  <%= f.label "Project members" %>
+  <table id="project_members" style="border: 4px solid gray; width: 500px">
+    <thead>
+      <tr> 
+        <th> selected </th>
+        <th> user name </th>
+      </tr>
+    </thead>
+    <tbody id="members_field">
+      <%= f.fields_for :projects_users do |builder| %>
+        <tr>
+          <%= builder.hidden_field :user_id %>
+          <td > <%= builder.check_box :member, {checked: !builder.object.id.nil?}%> </td>
+          <td > <%= builder.object.user.name %> </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+<% end %>

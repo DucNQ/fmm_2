@@ -33,7 +33,11 @@ teams = [
 Team.create(teams)
 
 projects = [
-  {name: "Framgia Test System", desc: "framgia test system", abbr: "FTS", team_id: 1, leader_id: 2},
-  {name: "Framgia Game", desc: "framgia smartphone game", abbr: "FG", team_id: 3, leader_id: 4}
+  {name: "Framgia Test System", desc: "framgia test system",
+    abbr: "FTS", team_id: 1, leader_id: 2, start_date: Time.now.to_date,
+    end_date: Time.now.to_date + 1},
+  {name: "Framgia Game", desc: "framgia smartphone game",
+    abbr: "FG", team_id: 3, leader_id: 4, start_date: Time.now.to_date,
+    end_date: Time.now.to_date + 1}
 ]
 Project.create(projects)

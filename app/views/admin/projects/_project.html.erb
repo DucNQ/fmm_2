@@ -1,0 +1,4 @@
+<%=link_to project.name, admin_project_path(project) %>
+<%= link_to "edit", edit_admin_project_path(project) %>
+<%= link_to "delete", admin_project_path(project), method: :delete, data: {confirm: "You sure?"} %>
+<br>

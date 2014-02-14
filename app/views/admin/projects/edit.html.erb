@@ -1,0 +1,40 @@
+<div class="span5 offset3" id="edit_field">
+  <h1><%= @project.name %></h1>
+  <%= render 'project_edit_form', project: @project%>
+</div>
+
+<script>
+$(document).ready(function(){
+  $('#project_team_id').change(function(){
+    getTeamMembers();
+  });
+  getTeamMembers();
+});
+
+function getTeamMembers() {
+  var team_id = $('#project_team_id').val();
+  var project_id = $('#project_id').val();
+  $.ajax({
+    type: "GET",
+    dataType: "json",
+    url: "/teams/" + team_id + "/users",
+    success: function(data){
+      var html = "";
+      var index;
+      for (index = 0; index < data.length; index++) {
+        html = html + "<option value=\"" + data[index].id + "\">" + data[index].name + "</option>";
+      }
+      $("#project_leader_id").html(html);
+    }
+  });
+
+  $.ajax({
+    type: "GET",
+    url: "edit/?team_id=" + team_id,
+    dataType: "html",
+    success: function(data){
+      $('#members_field').html($(data).find('#members_field').html());
+    }
+  }); 
+}
+</script>
