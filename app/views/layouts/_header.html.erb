@@ -34,6 +34,15 @@
                   <li><%= link_to "View all projects", '#'%></li>
                 </ul>
               </li>
+              <li id="fat-menu" class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  Skills <b class="caret"></b>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><%= link_to "New skills", new_admin_skill_path%></li>
+                  <li><%= link_to "View all skills", admin_skills_path%></li>
+                </ul>
+              </li>
             <% end %>
             <li id="fat-menu" class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">

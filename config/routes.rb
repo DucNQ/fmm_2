@@ -7,6 +7,7 @@ Fmm2::Application.routes.draw do
     resources :users
     resources :positions
     resources :projects
+    resources :skills
   end
 
   resources :teams do

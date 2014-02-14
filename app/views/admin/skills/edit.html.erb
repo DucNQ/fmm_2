@@ -1,0 +1,8 @@
+<h1> Skill </h1>
+
+<div class="span5 offset3">
+  <%= form_for [:admin, @skill] do |f| %>
+    <%= render 'skill_form', f: f %>
+    <%= f.submit "Update", class: "btn btn-large btn-primary" %>
+  <% end %>
+</div>
